@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/head') %>
+  <body>
+    <h1><%= title %></h1>
+    <button onclick="getLocation()" class='btn btn-primary'>Use Current Location</button>
+
+    <form action='/find-stores' method="get" >
+      <label>Location:</label>
+      <input type='text' name='lat' id='lat'/>
+      <input type='text' name='lng' id='lng'/><br/>
+      <input type='submit' value="Submit"/>
+    </form>
+
+
+    <div id="map"></div>
+
+
+  </body>
+  <script>
+    function initMap() {
+      var uluru = {lat: -25.363, lng: 131.044};
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 4,
+        center: uluru
+      });
+      var marker = new google.maps.Marker({
+        position: uluru,
+        map: map
+      });
+    }
+  </script>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=<%= publicApiKey %>&callback=initMap">
+  </script>
+
+
+  <script>
+  function getLocation() {
+    if (navigator.geolocation) {
+      let position = navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+  }
+  function showPosition(position) {
+    document.getElementById('lat').value = position.coords.latitude;
+    document.getElementById('lng').value = position.coords.longitude;
+
+  }
+  </script>
+
+    <%- include('../partials/footer') %>
+</html>
