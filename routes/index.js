@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var StoreController = require('../controllers/StoreController');
-var MapController = require('../controllers/MapController');
 var config = require('config');
 
 /* GET home page. */
@@ -16,10 +15,14 @@ router.put('/stores/:_id',StoreController.updateOne);
 router.delete('/stores/:_id',StoreController.delete);
 
 router.get('/find-store',function(req, res, next){
-  res.render('stores/find-store', {title: 'Find Store', publicApiKey: config.get('Maps.publicApiKey')});
+  res.render('stores/find-store', {
+    title: 'Find Store',
+    publicApiKey: config.get('Maps.publicApiKey'),
+    lat:0,
+    lng:0
+  });
 } );
 router.get('/find-stores',StoreController.find);
-//router.get('/map',MapController.list);
 
 
 router.get('/search-address', function(req, res, next) {

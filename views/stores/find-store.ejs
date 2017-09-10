@@ -3,31 +3,63 @@
   <%- include('../partials/head') %>
   <body>
     <h1><%= title %></h1>
-    <button onclick="getLocation()" class='btn btn-primary'>Use Current Location</button>
 
-    <form action='/find-stores' method="get" >
-      <label>Location:</label>
-      <input type='text' name='lat' id='lat'/>
-      <input type='text' name='lng' id='lng'/><br/>
-      <input type='submit' value="Submit"/>
+    <button onclick="getLocation()" class='btn btn-secondary'>Use Current Location</button>
+    <form action='/find-stores' method="get"  class="form-inline">
+
+      <label class="col-xs-12 col-sm-2 text-right">Location:</label>
+      <div class="form-group col-sm-10">
+        <input type='text' name='lat' id='lat' class="form-control col-xs-6"/>
+        <input type='text' name='lng' id='lng' class="form-control col-xs-6"/>
+      </div>
+
+      <div class="form-check form-check-inline">
+        <label class="col-xs-12 col-sm-2 text-right">
+          View:
+        </label>
+        <div class="form-group col-sm-10">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="view" id="view1" value="json" checked="checked"> json
+          </label>
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="view" id="view2" value="map"> map
+          </label>
+        </div>
+      </div>
+      <div class="form-check form-check-inline">
+
+      </div>
+
+      <div class="form-group">
+        <input type='submit' value="Submit" class="btn btn-primary"/>
+      </div>
     </form>
 
+    <div id="map" style="width:100%;height:400px;"></div>
 
-    <div id="map"></div>
+
 
 
   </body>
   <script>
     function initMap() {
-      var uluru = {lat: -25.363, lng: 131.044};
+
       var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
-        center: uluru
+        zoom: 14,
+        center: {lat: <%= lat %>, lng: <%= lng %>}
       });
-      var marker = new google.maps.Marker({
-        position: uluru,
+      new google.maps.Marker({
+        position: {lat: <%= lat %>, lng: <%= lng %>},
         map: map
       });
+      <% stores.forEach(function(store){ %>
+        new google.maps.Marker({
+          title: "<%= store.name %>",
+          position: {lat: <%= store.coordinates.lat %>, lng: <%= store.coordinates.lng %> },
+          map: map
+        });
+      <% }); %>
+
     }
   </script>
   <script async defer
