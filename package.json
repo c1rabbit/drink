@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node node_modules/nodemon/bin/nodemon ./bin/www"
+    "start": "node_modules/.bin/nodemon ./bin/www",
+    "build": "node_modules/.bin/gulp "
   },
   "dependencies": {
     "body-parser": "^1.17.2",
@@ -20,6 +21,7 @@
     "serve-favicon": "~2.4.2"
   },
   "devDependencies": {
+    "gulp": "^3.9.1",
     "nodemon": "^1.12.0"
   }
 }
