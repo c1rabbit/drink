@@ -18,8 +18,8 @@ router.get('/find-store',function(req, res, next){
   res.render('stores/find-store', {
     title: 'Find Store',
     publicApiKey: config.get('Maps.publicApiKey'),
-    lat:0,
-    lng:0
+    lat:config.get('Maps.defaultCenterCoords.lat'),
+    lng:config.get('Maps.defaultCenterCoords.lng')
   });
 } );
 router.get('/find-stores',StoreController.find);

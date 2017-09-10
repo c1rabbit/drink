@@ -4,7 +4,8 @@
     "port": 27017,
     "dbName": "drinkclub"
   },
-  "Maps":{
+  "Maps":{  
+    "defaultCenterCoords": {"lat":34.096982 , "lng":-118.105444},
     "apiKey": "",
     "baseUrl": "https://maps.googleapis.com/maps/api/geocode/json",
     "publicApiKey":""
