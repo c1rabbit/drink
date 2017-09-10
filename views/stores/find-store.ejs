@@ -23,7 +23,7 @@
         <input type='text' name='lng' id='lng' class="form-control col-xs-6"/>
       </div>
 
-      <div class="form-check form-check-inline">
+      <!--<div class="form-check form-check-inline">
         <label class="col-xs-12 col-sm-2 text-right">
           View:
         </label>
@@ -35,10 +35,7 @@
             <input class="form-check-input" type="radio" name="view" id="view2" value="map" checked="checked"> map
           </label>
         </div>
-      </div>
-      <div class="form-check form-check-inline">
-
-      </div>
+      </div>-->
 
       <div class="form-group">
         <input type='submit' value="Submit" class="btn btn-primary"/>
@@ -51,7 +48,9 @@
         <% if(typeof stores != 'undefined' && stores != null) {
           for(let i=0; i<stores.length;i++) { %>
             <div class="row store">
-              <div class="store_name col-xs-6"><%= stores[i].name %></div>
+              <div class="store_name col-xs-6">
+                <a href="/stores/<%= stores[i]._id %>"><%= stores[i].name %></a>
+              </div>
               <div class="store_address col-xs-6">
                 <%= stores[i].address.addr1 %><br/>
                 <%= stores[i].address.city + ", " + stores[i].address.state + " " + stores[i].address.postalCode %></br>

@@ -13,7 +13,11 @@ exports.get = function(req, res) {
   Store.find(req.params, function(err, stores) {
       if (err)
           res.send(err);
-      res.json(stores);
+      if(req.query.json == true){
+        res.json(stores);
+      }else{
+        res.render('stores/view-store', stores);
+      }
   });
 };
 
@@ -33,9 +37,9 @@ exports.find = function(req, res){
    .exec(function(err, stores) {
       if (err)
           res.send(err);
-      if(req.query.view == 'json'){
+      if(req.query.json == true){
         res.json(stores);
-      }else if (req.query.view == 'map') {
+      }else {
         res.render('stores/find-store', {
           title:"stores found",
           stores, stores,
