@@ -10,10 +10,15 @@ gulp.task('bootstrap', function(){
   return null;
 });
 
+gulp.task('material-design-icons', function(){
+  return gulp.src('node_modules/material-design-icons-iconfont/dist/fonts/*.ttf')
+    .pipe(gulp.dest('public/fonts'));
+})
+
 gulp.task('jquery', function(){
   return gulp.src('node_modules/jquery/dist/*.min.js')
     .pipe(gulp.dest('public/javascripts'));
 });
 
 
-gulp.task('default', [ 'bootstrap' , 'jquery']);
+gulp.task('default', [ 'bootstrap' , 'jquery', 'material-design-icons']);
