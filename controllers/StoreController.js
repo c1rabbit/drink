@@ -1,4 +1,5 @@
 var Store = require('../models/Store');
+var config = require('config');
 
 exports.getAll = function(req, res) {
   Store.find(function(err, stores) {
@@ -25,15 +26,26 @@ exports.find = function(req, res){
   let lngLower = parseFloat(req.query.lng) - lngRange;
   let lngUpper = parseFloat(req.query.lng) + lngRange;
 
-  console.log(lngUpper);
+  //console.log(lngUpper);
   Store.find()
    .where('coordinates.lat').gt(latLower).lt(latUpper)
    .where('coordinates.lng').gt(lngLower).lt(lngUpper)
    .exec(function(err, stores) {
       if (err)
           res.send(err);
-      res.json(stores);
+      if(req.query.view == 'json'){
+        res.json(stores);
+      }else if (req.query.view == 'map') {
+        res.render('stores/find-store', {
+          title:"stores found",
+          stores, stores,
+          lat: req.query.lat,
+          lng: req.query.lng,
+          publicApiKey: config.get('Maps.publicApiKey')
+        });
+      }
   });
+
 }
 
 exports.create = function(req, res) {
