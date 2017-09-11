@@ -3,6 +3,9 @@
   <%- include('../partials/head') %>
 
   <style>
+    .store:first{
+      border-top:1px solid #eee;
+    }
     .store{
       padding:1em;
       border-bottom:1px solid #eee;
@@ -21,6 +24,16 @@
       <div class="form-group col-sm-10">
         <input type='text' name='lat' id='lat' class="form-control col-xs-6"/>
         <input type='text' name='lng' id='lng' class="form-control col-xs-6"/>
+      </div>
+
+      <label class="col-xs-12 col-sm-2 text-right">Distance:</label>
+      <div class="form-group col-sm-10">
+        <select class="form-control form-control-sm" name="distance">
+          <option value=1 >&lt; 1mi</option>
+          <option value=5 name="distance">&lt; 5mi</option>
+          <option value=10 name="distance">&lt; 10mi</option>
+          <option value=15 name="distance">&lt; 15mi</option>
+        </select>
       </div>
 
       <!--<div class="form-check form-check-inline">
@@ -42,25 +55,27 @@
       </div>
     </form>
 
-    <div class="clearfix"></div>
-      <div id="map" style="height:400px;" class="col-xs-6"></div>
-      <div class="col-xs-6">
-        <% if(typeof stores != 'undefined' && stores != null) {
-          for(let i=0; i<stores.length;i++) { %>
-            <div class="row store">
-              <div class="store_name col-xs-6">
-                <a href="/stores/<%= stores[i]._id %>"><%= stores[i].name %></a>
+    <div class="container">
+      <div class='row'>
+        <div id="map" style="height:400px;" class="col col-xs-6"></div>
+        <div class="col col-xs-6">
+          <% if(typeof stores != 'undefined' && stores != null) {
+            for(let i=0; i<stores.length;i++) { %>
+              <div class="row store">
+                <div class="store_name col col-xs-6">
+                  <a href="/stores/<%= stores[i]._id %>"><%= stores[i].name %></a>
+                </div>
+                <div class="store_address col col-xs-6">
+                  <%= stores[i].address.addr1 %><br/>
+                  <%= stores[i].address.city + ", " + stores[i].address.state + " " + stores[i].address.postalCode %></br>
+                  <%= stores[i].tel %>
+                </div>
               </div>
-              <div class="store_address col-xs-6">
-                <%= stores[i].address.addr1 %><br/>
-                <%= stores[i].address.city + ", " + stores[i].address.state + " " + stores[i].address.postalCode %></br>
-                <%= stores[i].tel %>
-              </div>
-            </div>
-          <% }
-        } %>
+            <% }
+          } %>
+        </div>
       </div>
-    <div class="clearfix"></div>
+    </div>
 
   </body>
   <script>

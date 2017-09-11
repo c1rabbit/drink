@@ -16,14 +16,17 @@ exports.get = function(req, res) {
       if(req.query.json == true){
         res.json(stores);
       }else{
-        res.render('stores/view-store', stores);
+        res.render('stores/view-store', {stores:stores});
       }
   });
 };
 
 exports.find = function(req, res){
-  const latRange = .5;
-  const lngRange = .5;
+  // one degree lattitude is approx 69miles
+  // one mile ~ .01 deg
+  console.log(req.query.distance);
+  const latRange = .01 * req.query.distance;//~5mi
+  const lngRange = .01 * req.query.distance;
 
   let latLower = parseFloat(req.query.lat) - latRange;
   let latUpper = parseFloat(req.query.lat) + latRange;
