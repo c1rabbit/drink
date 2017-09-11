@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <%- include('../partials/head') %>
-  <body>
+  <body class='container'>
     <h1><%= title %></h1>
     <form action='/validate-address' method="get">
       <label>Address:</label>
@@ -12,7 +12,8 @@
       <input type='text' name='state'/><br/>
       <label>Postal Code:</label>
       <input type='text' name='postalCode'/><br/>
-      <input type='submit' value="Submit"/>
+      <input type='submit' value="Submit" class='btn btn-primary'/>
     </form>
+  <%- include('../partials/footer') %>
   </body>
 </html>
