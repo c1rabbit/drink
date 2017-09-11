@@ -50,13 +50,20 @@ var storeSchema = new Schema({
     type: Date,
     default: Date.now
   },
-
+  claimed:{
+    type:Boolean,
+    default:false
+  }
+  published:{
+    type:Boolean,
+    deafult:false
+  }
   status: {
     type: [{
       type: String,
-      enum: ['pending', 'ongoing', 'completed']
+      enum: ['unclaimed', 'claimed', 'ongoing', 'published']
     }],
-    default: ['pending']
+    default: ['unclaimed']
   }
 });
 
