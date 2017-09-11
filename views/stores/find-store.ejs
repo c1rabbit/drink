@@ -20,14 +20,14 @@
     <button onclick="getLocation()" class='btn btn-secondary'>Use Current Location</button>
     <form action='/find-stores' method="get"  class="form-inline">
 
-      <label class="col-xs-12 col-sm-2 text-right">Location:</label>
-      <div class="form-group col-sm-10">
-        <input type='text' name='lat' id='lat' class="form-control col-xs-6"/>
-        <input type='text' name='lng' id='lng' class="form-control col-xs-6"/>
+      <label class="col-12 col-sm-4 text-right">Location:</label>
+      <div class="form-group col-12 col-sm-8">
+        <input type='text' name='lat' id='lat' class="form-control col-6"/>
+        <input type='text' name='lng' id='lng' class="form-control col-6"/>
       </div>
 
-      <label class="col-xs-12 col-sm-2 text-right">Distance:</label>
-      <div class="form-group col-sm-10">
+      <label class="col-12 col-sm-4 text-right">Distance:</label>
+      <div class="form-group col-12 col-sm-8">
         <select class="form-control form-control-sm" name="distance">
           <option value=1 >&lt; 1mi</option>
           <option value=5 name="distance">&lt; 5mi</option>
@@ -36,16 +36,16 @@
         </select>
       </div>
 
-      <label class="col-xs-12 col-sm-2 text-right">Checkbox food/drink type:</label>
-      <div class="form-group col-sm-10">
+      <label class="col-12 col-sm-4 text-right">Checkbox food/drink type:</label>
+      <div class="form-group col-12 col-sm-8">
       </div>
 
-      <label class="col-xs-12 col-sm-2 text-right">outlets/wifi:</label>
-      <div class="form-group col-sm-10">
+      <label class="col-12 col-sm-4 text-right">outlets/wifi:</label>
+      <div class="form-group col-12 col-sm-8">
       </div>
 
 
-      <div class="col-xs-12 ml-auto col-sm-10 ">
+      <div class="col-12 ml-auto col-sm-8 ">
         <input type='submit' value="Submit" class="btn btn-primary"/>
       </div>
     </form>
@@ -53,15 +53,15 @@
     <hr/>
     <div class="container">
       <div class='row'>
-        <div id="map" style="height:400px;" class="col col-xs-6"></div>
-        <div class="col col-xs-6">
+        <div id="map" style="height:400px;" class="col col-12 col-md-6"></div>
+        <div class="col col-12 col-md-6">
           <% if(typeof stores != 'undefined' && stores != null) {
             for(let i=0; i<stores.length;i++) { %>
               <div class="row store">
-                <div class="store_name col col-xs-6">
+                <div class="store_name col col-6">
                   <a href="/stores/<%= stores[i]._id %>"><%= stores[i].name %></a>
                 </div>
-                <div class="store_address col col-xs-6">
+                <div class="store_address col col-6">
                   <%= stores[i].address.addr1 %><br/>
                   <%= stores[i].address.city + ", " + stores[i].address.state + " " + stores[i].address.postalCode %></br>
                   <%= stores[i].tel %>
