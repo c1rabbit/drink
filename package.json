@@ -5,9 +5,10 @@
   "scripts": {
     "start": "node_modules/.bin/nodemon ./bin/www",
     "build": "npm run clean && gulp ",
-    "clean":"node_modules/.bin/gulp clean"
+    "clean": "node_modules/.bin/gulp clean"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.2",
     "bootstrap": "^4.0.0-beta",
     "config": "^1.26.2",

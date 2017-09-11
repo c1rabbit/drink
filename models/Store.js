@@ -53,11 +53,11 @@ var storeSchema = new Schema({
   claimed:{
     type:Boolean,
     default:false
-  }
+  },
   published:{
     type:Boolean,
     deafult:false
-  }
+  },
   status: {
     type: [{
       type: String,

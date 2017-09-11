@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var StoreController = require('../controllers/StoreController');
+var UserController = require('../controllers/UserController');
 var config = require('config');
 
 /* GET home page. */
@@ -32,7 +33,12 @@ router.get('/validate-address', StoreController.validateAddress);
 router.get('/add-store', function(req, res, next) {
   res.render('stores/add-store', { title: 'Add Store' });
 });
-/*router.post('/add-store', StoreController.addStore);*/
 
+
+/*
+* User Controller
+*/
+router.get('/users', UserController.getAll);
+router.get('/users/:id', UserController.get);
 
 module.exports = router;

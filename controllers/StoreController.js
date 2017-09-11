@@ -10,13 +10,13 @@ exports.getAll = function(req, res) {
 };
 
 exports.get = function(req, res) {
-  Store.find(req.params, function(err, stores) {
+  Store.findOne(req.params, function(err, store) {
       if (err)
           res.send(err);
       if(req.query.json == true){
-        res.json(stores);
+        res.json(store);
       }else{
-        res.render('stores/view-store', {stores:stores});
+        res.render('stores/view-store', {store:store});
       }
   });
 };
