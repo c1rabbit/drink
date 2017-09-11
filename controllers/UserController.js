@@ -20,14 +20,38 @@ exports.get = function(req, res){
 };
 
 exports.create = function(req, res){
+  if(req.body.pw1 != req.body.pw2){
+    return res.render('result', {
+      title:'Error',
+      message:"Password doesn't match"
+    });
+  }
+
   let myUser = new User();
   myUser.f_name = req.body.fName;
   myUser.l_name = req.body.lName;
   myUser.email = req.body.email;
-  myUser.dob = req.body.dob;
-  myUser.login.pwTemp = bcrypt.hashSync("B4c0/\/", salt);
+  myUser.login.pw = bcrypt.hashSync(req.body.pw1, salt);
+//find unique
+  User.create(
+    myUser
+  , function(err, result){
+    if(err)
+      return res.send(err);
+    if(req.query.json == true){
+      return res.json(result);
+    }else{
+      return res.render('result', {
+        title:'Confirmation',
+        message:'Login Created',
+        redirect:{
+          url:'/',
+          text:'Login'
+        }
+      });
+    }
+  });
 
-  res.json();
 }
 
 exports.updateOne = function(req, res) {

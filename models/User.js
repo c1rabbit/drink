@@ -10,10 +10,8 @@ var storeSchema = new Schema({
     type:String
   },
   email:{
-    type:String
-  },
-  dob:{
-    type:Date
+    type:String,
+    unique: true
   },
   login:{
     pw:{

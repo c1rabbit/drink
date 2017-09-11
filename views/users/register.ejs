@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/head') %>
+  <body class='container col-sm-10 col-md-8 col-lg-6'>
+    <h1 class="text-center"><%= title %></h1>
+
+    <form action='/register' method="post" class="">
+      <div class="form-group row">
+        <label class='col-sm-3 col-form-label text-right'>First Name:</label>
+        <div class="col-sm-9">
+          <input type='text' name='fName' class="form-control" required/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class='col-sm-3 col-form-label text-right'>Last Name: </label>
+        <div class="col-sm-9">
+          <input type='text' name='lName' class="form-control" required/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class='col-sm-3 col-form-label text-right'>Email:</label>
+        <div class="col-sm-9">
+          <input type='email' name='email' class="form-control" required/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class='col-sm-3 col-form-label text-right'>Password:</label>
+        <div class="col-sm-9">
+          <input type='password' name='pw1' class="form-control" required/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class='col-sm-3 col-form-label text-right'>Repeat Password:</label>
+        <div class="col-sm-9">
+          <input type='password' name='pw2' class="form-control" required/>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="mr-auto"></div>
+        <div class="col-sm-9">
+          <input type='submit' value="Submit" class='btn btn-primary col-12 col-sm-3'/>
+        </div>
+      </div>
+    </form>
+  <%- include('../partials/footer') %>
+  </body>
+</html>

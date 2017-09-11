@@ -16,7 +16,7 @@ exports.get = function(req, res) {
       if(req.query.json == true){
         res.json(store);
       }else{
-        res.render('stores/view-store', {store:store});
+        return res.render('stores/view-store', {store:store});
       }
   });
 };
@@ -43,7 +43,7 @@ exports.find = function(req, res){
       if(req.query.json == true){
         res.json(stores);
       }else {
-        res.render('stores/find-store', {
+        return res.render('stores/find-store', {
           title:"stores found",
           stores, stores,
           lat: req.query.lat,
@@ -145,7 +145,7 @@ exports.validateAddress = function(req, response){
         const parsedData = JSON.parse(rawData);
         console.log(JSON.stringify(parsedData));
         let myAddress = parseGoogleAddress(parsedData);
-        response.render('stores/add-store', {title:"Add Store", address: myAddress, apiKey: publicApiKey});
+        return response.render('stores/add-store', {title:"Add Store", address: myAddress, apiKey: publicApiKey});
         //response.json(parsedData);
       } catch (e) {
         console.error(e.message);

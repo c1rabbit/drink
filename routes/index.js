@@ -38,6 +38,10 @@ router.get('/add-store', function(req, res, next) {
 /*
 * User Controller
 */
+router.get('/register', function(req, res, next){
+  res.render('users/register', {title: 'Register'});
+})
+router.post('/register', UserController.create);
 router.get('/users', UserController.getAll);
 router.get('/users/:id', UserController.get);
 
