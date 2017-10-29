@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <%- include('partials/head') %>
+  <body class='container'>
+    <h1><%= title %></h1>
+    <p>
+      <%= message %>
+    </p>
+    <% if(typeof redirect == 'undefined') { %>
+      <button onclick="window.history.back();" class="btn btn-secondary">Back</button>
+    <% } else{ %>
+      <a href="<%= redirect.url %>" class='btn btn-primary'><%= redirect.text %></a>
+    <% } %>
+    <%- include('partials/footer') %>
+  </body>
+</html>

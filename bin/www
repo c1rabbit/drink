@@ -112,5 +112,8 @@ function onListening() {
     : 'port ' + addr.port;
 
   debug('Listening on ' + bind);
-  console.log('Listening on '  + addr.family +  " " + addr.address  +  " port " + addr.port);
+  //console.log('Listening on '  + addr.family +  " " + addr.address  +  " port " + addr.port);
+
+  let host = (addr.address == "::") ? 'localhost' : addr.address;
+  console.log(`Listening on http://${host}:${port}`);
 }
