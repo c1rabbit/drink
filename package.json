@@ -28,6 +28,7 @@
     "serve-favicon": "~2.4.2"
   },
   "devDependencies": {
+    "ejs-lint": "^0.3.0",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
     "nodemon": "^1.12.0"

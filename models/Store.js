@@ -1,6 +1,8 @@
 'use strict';
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var Image = require('./Image');
+var Address = require('./Address');
 
 var storeSchema = new Schema({
   name: {
@@ -8,21 +10,19 @@ var storeSchema = new Schema({
     required: 'Kindly enter the name of the Store'
   },
   address:{
-    addr1:String,
-    addr2:String,
+    addr1:{ type: String, default: "" },
+    addr2:{ type: String, default: "" },
     city:String,
-    state:{ type: String, maxlength: 2, default:'CA' },
-    postalCode: { type: String, maxlength: 9 },
-    country: String
+    state:{ type: String, maxlength: 2, default: 'CA' },
+    postalCode: { type: String, maxlength: 9, default: "" },
+    country: { type: String, default: "" }
   },
   coordinates:{
     lng:Number,
     lat:Number
   },
-  website:{
-    type:String
-  },
-  tel:{ type: String, maxlength: 10 },
+  website:{ type: String, default:"" },
+  tel:{ type: String, maxlength: 10, default: "" },
   /*hours:[{
     day:Number,
     start:Date,
@@ -41,6 +41,12 @@ var storeSchema = new Schema({
       enum: ['n/a', 'coffee', 'tea', 'boba']
     }],
     default: ['n/a']
+  },
+  images: {
+    type: [{
+      type: Schema.Types.Mixed,
+      default: new Image
+    }]
   },
   Updated_date: {
     type: Date,
