@@ -1,0 +1,18 @@
+<html>
+<%- include partials/head %>
+
+<body>
+  <%- include partials/menu %>
+
+  <div class="alert alert-success container" role="alert">
+    <h4 class="alert-heading text-center"><%= message %></h4>
+    <hr />
+    <p><%= detail %></p>
+  </div>
+  <div class="container text-center">
+    <a href="<%= redirect %>" class="btn btn-outline-primary" role="button" aria-pressed="true">Continue</a>
+  </div>
+
+</body>
+<%- include partials/footer %>
+</html>

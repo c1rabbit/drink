@@ -6,11 +6,11 @@
     <%- include ../partials/menu-admin %>
 
     <div class='container'>
-      <form action='store' method="post">
+      <form action='/admin/store/<%= store._id%>?_method=PUT' method="post">
         <div>
           <label>Name:</label>
           <div class='col'>
-            <input type='text' name='storeName' value="<%= store.name %>" class="form-control"/>
+            <input type='text' name='name' value="<%= store.name %>" class="form-control"/>
           </div>
         </div>
         <div>
@@ -30,7 +30,7 @@
           <input type="text" name='postalCode' value='<%= store.address.postalCode %>'/>
         </div>
 
-        <input type='submit' value="Submit" class='col-form-submit btn btn-primary'/>
+        <input type='submit' value="Update" class='col-form-submit btn btn-primary'/>
 
       </form>
 

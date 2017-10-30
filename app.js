@@ -11,6 +11,8 @@ var admin = require('./routes/admin');
 
 var app = express();
 
+var methodOverride = require('method-override')
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -22,6 +24,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+/* override http method requests*/
+app.use(methodOverride('_method'));
 
 app.use('/', index);
 app.use('/admin', admin);

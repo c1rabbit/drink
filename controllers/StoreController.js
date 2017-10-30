@@ -104,10 +104,15 @@ exports.edit = function(req, res) {
 };
 
 exports.updateOne = function(req, res) {
-  Store.findOneAndUpdate(req.params, req.body,  function(err, result) {
+  console.log(req.body);
+  Store.findOneAndUpdate(req.params, req.body, {new:true},  function(err, result) {
       if (err)
         res.send(err);
-      res.json(result);
+      res.render('success', {
+        message: 'Store info has been updated!',
+        detail: "Store Name: " + result.name,
+        redirect: "/admin/"
+      });
   });
 };
 
