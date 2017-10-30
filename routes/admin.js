@@ -16,6 +16,7 @@ router.get('/store/:_id',StoreController.get);
 router.post('/store',StoreController.create);
 router.get('/store/:_id/edit',StoreController.edit);
 router.put('/store/:_id',StoreController.updateOne);
+router.get('/store/:_id/delete',StoreController.delete);
 router.delete('/store/:_id',StoreController.delete);
 
 router.get('/search-address', function(req, res, next) {

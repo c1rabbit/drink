@@ -118,11 +118,24 @@ exports.updateOne = function(req, res) {
 
 
 exports.delete = function(req, res) {
-  Store.remove(req.params, function(err, result) {
+  if(req.method === 'GET'){
+    Store.findOne(req.params, req.body, function(err, store){
       if (err)
-        res.send(err);
-      res.json(result);
-  });
+        return res.send(err);
+      return res.render('stores/delete-store', {store:store});
+    })
+  }else{
+    Store.remove(req.params, function(err, result) {
+        if (err)
+          return res.send(err);
+        return res.render('success', {
+          message: 'Store has been deleted!',
+          detail: '',
+          redirect: '/admin/'
+
+        });
+    });
+  }
 };
 
 exports.validateAddress = function(req, response){
