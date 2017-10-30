@@ -5,6 +5,9 @@
       width:100%;
       height:17em;
     }
+    td, th{
+      text-align: center;
+    }
   </style>
 
 <body>
@@ -40,19 +43,20 @@
       <a class="nav-item nav-link" href="#">Tea</a>
     </nav>
     <table class="menu table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+        </tr>
+      </thead>
       <tbody>
-        <tr>
-          <th scope="row">Coffee</th>
-          <td>$1.00</td>
-        </tr>
-        <tr>
-          <th scope="row">Cafe Latte</th>
-          <td>$1.00</td>
-        </tr>
-        <tr>
-          <th scope="row">Esspresso</th>
-          <td>$1.00</td>
-        </tr>
+        <% store.menu.forEach(function(item){ %>
+          <tr>
+            <td scope="row"><%= item.MenuItem.itemName %></td>
+            <td scope="row"><%= numeral(item.MenuItem.price).format('0.00') %></td>
+          </tr>
+
+        <% }); %>
       </tbody>
     </table>
   </div>

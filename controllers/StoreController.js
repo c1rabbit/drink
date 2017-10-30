@@ -18,7 +18,7 @@ exports.get = function(req, res) {
       if(req.query.json == true){
         return res.json(store);
       }else{
-        return res.render('stores/view-store', {store:store});
+        return res.render('stores/view-store', {store:store,numeral});
       }
   });
 };
