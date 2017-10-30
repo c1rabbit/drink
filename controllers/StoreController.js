@@ -139,60 +139,51 @@ exports.addMenuItem = function(req, res) {
 
   Store.findOne(req.params).then(function(store){
 
-      console.log(req.body);
-      console.log("before:" + store);
       let menuItem = new MenuItem;
-      console.log(req.body.name);
       menuItem.itemName = req.body['menu.MenuItem.itemName'];
       menuItem.price = req.body['menu.MenuItem.price'];
       menuItem.description = req.body['menu.MenuItem.description'];
       store.menu.push({MenuItem:menuItem});
       store.save();
-console.log("after:" + store);
       return store;
 
-      //
-
-      //console.log("menu:" + store.menu);
-      //let menuItem = new MenuItem();
-      //menuItem.name = req.body.name;
-      //console.log(req.body.name);
-      //store.menu.push( new MenuItem());
-
-      //console.log(store);
-      //store.save();
-    /*  return res.render('success', {
-        message: 'Menu has been updated!',
-        detail: "Store Name: " + store.name,
-        redirect: "/admin/store/menu/" + store.id
-      });*/
-
     }).then(function(store){
+
       console.log('saving:' + store._id);
-      //console.log('store:' + store);
+
       Store.findOneAndUpdate({_id:store._id}, store, {new:true}, function(err, result){
         if(err)
           return res.send(err);
         return res.render('success', {
           message: 'Menu has been updated!',
           detail: "Store Name: " + store.name,
-          redirect: "/admin/store/menu/edit/" + store._id
+          redirect: "/admin/store/" + store._id + "/menu/edit"
         });
+
       });
     }).catch(function(err){
       console.log(err);
       return res.send(err);
     });
+};
 
-  /*Store.findOneAndUpdate(req.params, req.body, {new:true},  function(err, result) {
-      if (err)
-        res.send(err);
-      res.render('success', {
-        message: 'Store info has been updated!',
-        detail: "Store Name: " + result.name,
-        redirect: "/admin/"
+exports.deleteMenuItem = function(req, res) {
+  Store.findOne(req.params).then(function(store){
+    store.menu.splice(req.body.menuId, 1);
+    store.save();
+    return store;
+  }).then(function(store){
+    Store.findOneAndUpdate(req.params, store, function(err, result){
+      if(err)
+        return res.send(err);
+      return res.render('success', {
+        message: 'Menu has been updated!',
+        detail: "Store Name: " + store.name,
+        redirect: "/admin/store/" + store._id + "/menu/edit"
       });
-  });*/
+    })
+  });
+
 };
 
 

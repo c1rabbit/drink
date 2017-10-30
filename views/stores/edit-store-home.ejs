@@ -12,8 +12,8 @@
         <%= store.address.city %>, <%= store.address.state %>
       </div>
 
-      <a href="/admin/store/info/<%= store.id %>/edit">Business Info</a><br/>
-      <a href="/admin/store/menu/<%= store.id %>/edit">Menu</a>
+      <a href="/admin/store/<%= store.id %>/info/edit">Business Info</a><br/>
+      <a href="/admin/store/<%= store.id %>/menu/edit">Menu</a>
     </div>
     <%- include ../partials/footer %>
     <%- include ../partials/formFormatter %>

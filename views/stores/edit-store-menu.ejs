@@ -18,20 +18,25 @@
             <th class='col-auto'>Delete</th>
           </tr>
         </thead>
-        <% store.menu.forEach(function(item){ %>
+        <% store.menu.forEach(function(item, i){ %>
         <tbody>
           <tr class='row'>
             <td class='col'><%= item.MenuItem.itemName %></td>
             <td class='col'><%= numeral(item.MenuItem.price).format('$0.00') %></td>
             <td class='col'><%= item.MenuItem.description %></td>
-            <td class='col-auto'><a href="/admin/store/menu/delete/" class="btn btn-danger">X</a></td>
+            <td class='col-auto'>
+              <form method="POST" action="/admin/store/menu/<%= store._id %>?_method=DELETE">
+                <input type='hidden' name="menuId" value="<%= i %>"/>
+                <input type="submit" value="X" class="btn btn-danger"/>
+              </form>
+            </td>
           </tr>
         </tbody>
         <% }); %>
       </table>
 
 
-      <form action='/admin/store/menu/add/<%= store._id%>' method="post">
+      <form action='/admin/store/<%= store._id%>/menu' method="post">
         <div class='row'>
           <input type='text' name="menu.MenuItem.itemName" placeholder="Item Name" class='col'/>
           <input type='text' name="menu.MenuItem.price" placeholder="Price" class='col'/>
