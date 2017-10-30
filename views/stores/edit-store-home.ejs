@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/head') %>
+  <body>
+
+    <%- include ../partials/menu-admin %>
+
+    <div class='container'>
+      <h2><%= store.name %></h2>
+      <div>
+        <%= store.address.addr1 %><br/>
+        <%= store.address.city %>, <%= store.address.state %>
+      </div>
+
+      <a href="/admin/store/info/<%= store.id %>/edit">Business Info</a><br/>
+      <a href="/admin/store/menu/<%= store.id %>/edit">Menu</a>
+    </div>
+    <%- include ../partials/footer %>
+    <%- include ../partials/formFormatter %>
+  </body>
+</html>

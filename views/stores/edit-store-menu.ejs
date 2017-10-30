@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/head') %>
+  <body>
+
+    <%- include ../partials/menu-admin %>
+
+    <div class='container'>
+
+      <h1><%= store.name %> - Menu</h1>
+
+      <table class="table">
+        <thead>
+          <tr class="row">
+            <th class='col'>Name</th>
+            <th class='col'>Price</th>
+            <th class='col'>Description</th>
+            <th class='col-auto'>Delete</th>
+          </tr>
+        </thead>
+        <% store.menu.forEach(function(item){ %>
+        <tbody>
+          <tr class='row'>
+            <td class='col'><%= item.MenuItem.itemName %></td>
+            <td class='col'><%= numeral(item.MenuItem.price).format('$0.00') %></td>
+            <td class='col'><%= item.MenuItem.description %></td>
+            <td class='col-auto'><a href="/admin/store/menu/delete/" class="btn btn-danger">X</a></td>
+          </tr>
+        </tbody>
+        <% }); %>
+      </table>
+
+
+      <form action='/admin/store/menu/add/<%= store._id%>' method="post">
+        <div class='row'>
+          <input type='text' name="menu.MenuItem.itemName" placeholder="Item Name" class='col'/>
+          <input type='text' name="menu.MenuItem.price" placeholder="Price" class='col'/>
+          <input type='text' name="menu.MenuItem.description" placeholder="Description" class='col'/>
+
+          <input type='submit' value="Add Item" class='col-auto col-form-submit btn btn-primary'/>
+        </div>
+      </form>
+
+    </div>
+    <%- include ../partials/footer %>
+    <%- include ../partials/formFormatter %>
+  </body>
+</html>

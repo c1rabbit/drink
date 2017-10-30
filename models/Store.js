@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var Image = require('./Image');
 var Address = require('./Address');
+var MenuItem = require('./MenuItem');
 
 var storeSchema = new Schema({
   name: {
@@ -46,6 +47,12 @@ var storeSchema = new Schema({
     type: [{
       type: Schema.Types.Mixed,
       default: new Image
+    }]
+  },
+  menu:{
+    type:[{
+      type: Schema.Types.Mixed,
+      default: new MenuItem
     }]
   },
   Updated_date: {
