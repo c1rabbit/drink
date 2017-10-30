@@ -4,20 +4,31 @@ var config = require('config');
 exports.getAll = function(req, res) {
   Store.find(function(err, stores) {
       if (err)
-          res.send(err);
-      res.json(stores);
+        return res.send(err);
+      return res.json(stores);
   });
 };
 
 exports.get = function(req, res) {
   Store.findOne(req.params, function(err, store) {
       if (err)
-          res.send(err);
+        return res.send(err);
       if(req.query.json == true){
-        res.json(store);
+        return res.json(store);
       }else{
         return res.render('stores/view-store', {store:store});
       }
+  });
+};
+
+exports.recentlyAdded = function(req, res){
+  Store.find()
+    .sort({'Created_date':-1})
+    .limit(10)
+    .exec(function(err, stores){
+      if(err)
+        return res.send(err);
+      return res.render('index-admin', {stores});
   });
 };
 
@@ -81,6 +92,14 @@ exports.create = function(req, res) {
       if (err)
         res.send(err);
       res.json(result);
+  });
+};
+
+exports.edit = function(req, res) {
+  Store.findOne(req.params, req.body,  function(err, store) {
+      if (err)
+        res.send(err);
+      res.render('stores/edit-store', {store:store});
   });
 };
 

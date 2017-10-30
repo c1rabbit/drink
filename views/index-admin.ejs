@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <%- include partials/head %>
+  <body>
+    <%- include partials/menu-admin %>
+
+    <div class='container'>
+      <h2>Recently Added Stores</h2>
+
+      <% stores.forEach(function(store){ %>
+        <div>
+          <a href="store/<%= store.id %>/edit"><%= store.name %></a>
+        </div>
+      <% }); %>
+
+    </div>
+
+  </body>
+</html>

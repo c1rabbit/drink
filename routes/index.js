@@ -9,11 +9,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/stores',StoreController.getAll);
-router.get('/stores/:_id',StoreController.get);
-router.post('/stores',StoreController.create);
-router.put('/stores/:_id',StoreController.updateOne);
-router.delete('/stores/:_id',StoreController.delete);
+router.get('/store',StoreController.getAll);
+router.get('/store/:_id',StoreController.get);
 
 router.get('/find-store',function(req, res, next){
   res.render('stores/find-store', {
@@ -26,13 +23,6 @@ router.get('/find-store',function(req, res, next){
 router.get('/find-stores',StoreController.find);
 
 
-router.get('/search-address', function(req, res, next) {
-  res.render('stores/search-address', { title: 'Search Address' });
-});
-router.get('/validate-address', StoreController.validateAddress);
-router.get('/add-store', function(req, res, next) {
-  res.render('stores/add-store', { title: 'Add Store' });
-});
 
 
 /*

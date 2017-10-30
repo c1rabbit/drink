@@ -2,50 +2,54 @@
 <html>
   <%- include('../partials/head') %>
   <body class='container'>
-    <h1><%= title %></h1>
-    <form action='/stores' method="post">
-      <label>Name:</label>
-      <input type='text' name='storeName'/>
-      <p>
-        <label>Address: </label>
-        <%= address.formattedAddress %>
-      </p>
 
-      <p>Is this information correct?</p>
+    <%- include ../partials/menu-admin %>
 
-      <!-- <input type="hidden" name='address' value='<%= address %>'/> -->
-      <input type="hidden" name='addr1' value='<%= address.streetNum + " "+ address.streetRoute %>'/>
-      <input type="hidden" name='city' value='<%= address.city %>'/>
-      <input type="hidden" name='state' value='<%= address.state %>'/>
-      <input type="hidden" name='postalCode' value='<%= address.postalCode %>'/>
-      <input type="hidden" name='country' value='<%= address.country %>'/>
-      <input type="hidden" name='lat' value='<%= address.location.lat %>'/>
-      <input type="hidden" name='lng' value='<%= address.location.lng %>'/>
+    <div class='container'>
+      <h1><%= title %></h1>
+      <form action='store' method="post">
+        <label>Name:</label>
+        <input type='text' name='storeName'/>
+        <p>
+          <label>Address: </label>
+          <%= address.formattedAddress %>
+        </p>
 
-      <!--<p><%= address.location.lat %></p>
-      <p><%= address.location.lng %></p>-->
+        <p>Is this information correct?</p>
 
-      <!--<label>Address:</label>
-      <input type='text' name='address'/><br/>
-      <label>City: </label>
-      <input type='text' name='city'/><br/>
-      <label>State:</label>
-      <input type='text' name='state'/><br/>
-      <label>Postal Code:</label>
-      <input type='text' name='postalCode'/><br/>-->
-      <input type='submit' value="Submit" class="btn btn-primary"/>
-    </form>
+        <!-- <input type="hidden" name='address' value='<%= address %>'/> -->
+        <input type="hidden" name='addr1' value='<%= address.streetNum + " "+ address.streetRoute %>'/>
+        <input type="hidden" name='city' value='<%= address.city %>'/>
+        <input type="hidden" name='state' value='<%= address.state %>'/>
+        <input type="hidden" name='postalCode' value='<%= address.postalCode %>'/>
+        <input type="hidden" name='country' value='<%= address.country %>'/>
+        <input type="hidden" name='lat' value='<%= address.location.lat %>'/>
+        <input type="hidden" name='lng' value='<%= address.location.lng %>'/>
 
-    <br/><br/>
+        <!--<p><%= address.location.lat %></p>
+        <p><%= address.location.lng %></p>-->
 
-    <iframe
-      width="600"
-      height="400"
-      frameborder="0" style="border:0"
-      src="https://www.google.com/maps/embed/v1/place?key=<%= apiKey %>
-        &q=<%= address.formattedAddress %>&center=<%= address.location.lat + ',' + address.location.lng %>" allowfullscreen>
-    </iframe>
+        <!--<label>Address:</label>
+        <input type='text' name='address'/><br/>
+        <label>City: </label>
+        <input type='text' name='city'/><br/>
+        <label>State:</label>
+        <input type='text' name='state'/><br/>
+        <label>Postal Code:</label>
+        <input type='text' name='postalCode'/><br/>-->
+        <input type='submit' value="Submit" class="btn btn-primary"/>
+      </form>
 
+      <br/><br/>
+
+      <iframe
+        width="600"
+        height="400"
+        frameborder="0" style="border:0"
+        src="https://www.google.com/maps/embed/v1/place?key=<%= apiKey %>
+          &q=<%= address.formattedAddress %>&center=<%= address.location.lat + ',' + address.location.lng %>" allowfullscreen>
+      </iframe>
+    </div>
     <%- include('../partials/footer') %>
   </body>
 </html>

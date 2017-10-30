@@ -19,7 +19,7 @@
     <h1><%= title %></h1>
 
     <button onclick="getLocation()" class='btn btn-secondary'>Use Current Location</button>
-    <form action='/find-stores' method="get"  class="form-inline">
+    <form action='find-stores' method="get"  class="form-inline">
 
       <label class="col-12 col-sm-4 text-right">Location:</label>
       <div class="form-group col-12 col-sm-8">
@@ -60,7 +60,7 @@
             for(let i=0; i<stores.length;i++) { %>
               <div class="row store">
                 <div class="store_name col col-6">
-                  <a href="/stores/<%= stores[i]._id %>"><%= stores[i].name %></a>
+                  <a href="store/<%= stores[i]._id %>"><%= stores[i].name %></a>
                 </div>
                 <div class="store_address col col-6">
                   <%= stores[i].address.addr1 %><br/>

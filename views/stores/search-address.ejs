@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html>
   <%- include('../partials/head') %>
-  <body class='container'>
-    <h1><%= title %></h1>
-    <form action='/validate-address' method="get">
-      <label>Address:</label>
-      <input type='text' name='address'/><br/>
-      <label>City: </label>
-      <input type='text' name='city'/><br/>
-      <label>State:</label>
-      <input type='text' name='state'/><br/>
-      <label>Postal Code:</label>
-      <input type='text' name='postalCode'/><br/>
-      <input type='submit' value="Submit" class='btn btn-primary'/>
-    </form>
+  <body>
+    <%- include ../partials/menu-admin %>
+    <div class='container'>
+      <h1><%= title %></h1>
+      <form action='validate-address' method="get">
+        <label>Address:</label>
+        <input type='text' name='address'/><br/>
+        <label>City: </label>
+        <input type='text' name='city'/><br/>
+        <label>State:</label>
+        <input type='text' name='state'/><br/>
+        <label>Postal Code:</label>
+        <input type='text' name='postalCode'/><br/>
+        <input type='submit' value="Submit" class='btn btn-primary'/>
+      </form>
+    </div>
   <%- include('../partials/footer') %>
   </body>
 </html>
