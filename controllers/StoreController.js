@@ -93,7 +93,11 @@ exports.create = function(req, res) {
   , function(err, result) {
       if (err)
         res.send(err);
-      res.json(result);
+      res.render('success',{
+        message:'New Store Added',
+        detail:'',
+        redirect:'/admin/'
+      });
   });
 };
 
