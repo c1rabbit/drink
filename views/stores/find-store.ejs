@@ -23,8 +23,8 @@
 
       <label class="col-12 col-sm-4 text-right">Location:</label>
       <div class="form-group col-12 col-sm-8">
-        <input type='text' name='lat' id='lat' class="form-control col-6"/>
-        <input type='text' name='lng' id='lng' class="form-control col-6"/>
+        <input type='text' name='lat' id='lat' class="form-control col-6" value="<%= lat %>"/>
+        <input type='text' name='lng' id='lng' class="form-control col-6" value="<%= lng %>"/>
       </div>
 
       <label class="col-12 col-sm-4 text-right">Distance:</label>
@@ -76,14 +76,14 @@
 
   </body>
   <script>
-    function initMap() {
+    function initMap(lat = <%= lat %>,lng = <%= lng %>) {
 
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 14,
-        center: {lat: <%= lat %>, lng: <%= lng %>}
+        center: {lat: lat, lng: lng}
       });
       new google.maps.Marker({
-        position: {lat: <%= lat %>, lng: <%= lng %>},
+        position: {lat: lat, lng:lng},
         map: map,
         icon: {
           path: google.maps.SymbolPath.CIRCLE,
@@ -131,6 +131,9 @@
   function showPosition(position) {
     document.getElementById('lat').value = position.coords.latitude;
     document.getElementById('lng').value = position.coords.longitude;
+    initMap(position.coords.latitude, position.coords.longitude);
+
+
 
   }
   </script>
