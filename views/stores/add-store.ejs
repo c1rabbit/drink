@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
   <%- include('../partials/head') %>
-  <body class='container'>
+  <body>
 
     <%- include ../partials/menu-admin %>
 
     <div class='container'>
       <h1><%= title %></h1>
       <form action='store' method="post">
-        <label>Name:</label>
-        <input type='text' name='storeName'/>
+        <div>
+          <label>Name:</label>
+          <input type='text' name='storeName'/>
+        </div>
         <p>
           <label>Address: </label>
           <%= address.formattedAddress %>
@@ -50,6 +52,7 @@
           &q=<%= address.formattedAddress %>&center=<%= address.location.lat + ',' + address.location.lng %>" allowfullscreen>
       </iframe>
     </div>
-    <%- include('../partials/footer') %>
+    <%- include ../partials/footer  %>
+    <%- include ../partials/formFormatter %>
   </body>
 </html>
